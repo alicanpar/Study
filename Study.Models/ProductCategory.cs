@@ -1,13 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace StudyWeb.Models
+namespace Study.Models
 {
     public class ProductCategory
     {
         [Key]
         public int Id { get; set; }
         [Required]
-        public string Name { get; set; }
+        public string Type { get; set; }
 
     }
 }

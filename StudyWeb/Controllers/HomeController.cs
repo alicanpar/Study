@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using StudyWeb.Models;
+using Study.Models;
 using System.Diagnostics;
 
 namespace StudyWeb.Controllers
@@ -17,8 +17,15 @@ namespace StudyWeb.Controllers
         {
             return View();
         }
-
-        public IActionResult Privacy()
+        public IActionResult Aboutus()
+        {
+            return View();
+        }
+        public IActionResult Contactus()
+        {
+            return View();
+        }
+        public IActionResult Login()
         {
             return View();
         }

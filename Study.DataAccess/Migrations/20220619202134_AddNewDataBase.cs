@@ -1,8 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿#nullable disable
 
-#nullable disable
+using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace StudyWeb.Migrations
+namespace Study.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class AddNewDataBase : Migration

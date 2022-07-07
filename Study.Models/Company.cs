@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace StudyWeb.Models
+namespace Study.Models
 {
     public class Company
     {

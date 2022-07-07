@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using StudyWeb.Data;
+using Study.DataAccess;
 
 var builder = WebApplication.CreateBuilder(args);
 

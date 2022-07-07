@@ -1,4 +1,4 @@
-namespace StudyWeb.Models
+namespace Study.Models
 {
     public class ErrorViewModel
     {
