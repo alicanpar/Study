@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Study.DataAccess.Repository
 {
-    internal class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private ApplicationDbContext _db;
         public UnitOfWork(ApplicationDbContext db)

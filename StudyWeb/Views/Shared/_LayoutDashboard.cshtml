@@ -70,23 +70,29 @@
                         <span class="nav-text">
                         </span>
                     </a>
-                </li>
+                </li>                
                 <li class="darkerlishadow">
-                    <a href="@Url.Action("xxx","Dashboard")">
+                    <a href="@Url.Action("ProductCategoryCreate","Dashboard")">
                         <i class="fa fa-clock-o fa-lg"></i>
                         <span class="nav-text">Ürün Kategorisi Ekle</span>
                     </a>
                 </li>
                 <li class="darkerli">
-                    <a href="@Url.Action("Index","Dashboard")">
+                    <a href="@Url.Action("ProductCategoryDelete","Dashboard")">
                         <i class="fa fa-desktop fa-lg"></i>
                         <span class="nav-text">Ürün Kategorisi Sil</span>
                     </a>
                 </li>
                 <li class="darkerli">
-                    <a href="">
+                    <a href="@Url.Action("ProductCategoryUpdate","Dashboard")">
                         <i class="fa fa-plane fa-lg"></i>
                         <span class="nav-text">Ürün Kategorisi Düzenle</span>
+                    </a>
+                </li>
+                <li class="darkerli">
+                    <a href="@Url.Action("ProductCategoryList","Dashboard")">
+                        <i class="fa fa-align-left fa-lg"></i>
+                        <span class="nav-text">Ürün Kategori Listele</span>
                     </a>
                 </li>
                 <li class="darkerli">
@@ -106,22 +112,16 @@
                         <i class="fa fa-flask fa-lg"></i>
                         <span class="nav-text">Ürün Düzenle</span>
                     </a>
+                </li>                
+                <li class="darkerli">
+                    <a href="">
+                        <i class="fa fa-align-left fa-lg"></i>
+                        <span class="nav-text">
+                            Ürünleri Listele
+                        </span>
+                    </a>
                 </li>
                 @*<li class="darkerli">
-                <a href="">
-                <i class="fa fa-picture-o fa-lg"></i>
-                <span class="nav-text">Art & Design</span>
-                </a>
-                </li>
-                <li class="darkerli">
-                <a href="">
-                <i class="fa fa-align-left fa-lg"></i>
-                <span class="nav-text">
-                Magazines
-                </span>
-                </a>
-                </li>
-                <li class="darkerli">
                 <a href="">
                 <i class="fa fa-gamepad fa-lg"></i>
                 <span class="nav-text">Games</span>
@@ -140,24 +140,24 @@
                 <i class="fa fa-rocket fa-lg"></i>
                 <span class="nav-text">Fun</span>
                 </a>
-                </li>
-                </ul>*@
-                <li>
-                    <a href="">
-                        <i class="fa fa-question-circle fa-lg"></i>
-                        <span class="nav-text">Help</span>
-                    </a>
-                </li>
+                </li>*@
+            </ul>
+            @*<li>
+            <a href="">
+            <i class="fa fa-question-circle fa-lg"></i>
+            <span class="nav-text">Help</span>
+            </a>
+            </li>*@
             </ul>
             <ul class="logout">
-                <li>
-                    <a href="">
-                        <i class="fa fa-lightbulb-o fa-lg"></i>
-                        <span class="nav-text">
-                            BLOG
-                        </span>
-                    </a>
-                </li>
+                @*<li>
+                <a href="">
+                <i class="fa fa-lightbulb-o fa-lg"></i>
+                <span class="nav-text">
+                BLOG
+                </span>
+                </a>
+                </li>*@
             </ul>
         </div>
     </nav>
