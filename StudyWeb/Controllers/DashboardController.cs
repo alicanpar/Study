@@ -59,8 +59,8 @@ namespace StudyWeb.Controllers
             }
             return View(productcategoryFromDbFirst);
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+       // [HttpPost]
+       // [ValidateAntiForgeryToken]
         public IActionResult DeletePOST(int? id)
         {
             var obj = _unitOfWork.ProductCategory.GetFirstOrDefault(u => u.Id == id);
