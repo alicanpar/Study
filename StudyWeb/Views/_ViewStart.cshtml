@@ -1,6 +1,6 @@
 ﻿@{
     string CurrentReq = Convert.ToString(Context.Request.HttpContext.Request.RouteValues["Controller"]);
-    var pages = new List<string> { "Dashboard" };
+    var pages = new List<string> { "Dashboard", "Product" };
     //if routeUrl contains any of pages,the page will use _Layout as Layout page,the other pages will use _Layout1 ad Layout page
     if (pages.Any(CurrentReq.Contains))
     {

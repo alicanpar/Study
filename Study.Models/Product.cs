@@ -20,7 +20,9 @@ namespace Study.Models
         public string Mark { get; set; }
         [Required]
         public double Size { get; set; }
+        [ValidateNever]
         public string ImageUrl { get; set; }
+        public double Price { get; set; }
         public int ProductCategoryId { get; set; }
         [ForeignKey("ProductCategoryId")]
         [ValidateNever]

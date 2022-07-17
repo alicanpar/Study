@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudyWeb", "StudyWeb\StudyW
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Study.DataAccess", "Study.DataAccess\Study.DataAccess.csproj", "{71E10111-ADFA-4C22-8694-41321E691121}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Study.Models", "Study.Models\Study.Models.csproj", "{AD1FED54-E11B-4FF3-9C86-5EBAF25E6448}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Study.Models", "Study.Models\Study.Models.csproj", "{AD1FED54-E11B-4FF3-9C86-5EBAF25E6448}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -30,7 +30,7 @@
             </div>
             <a class="py-2 d-none d-md-inline-block" asp-controller="Dashboard" asp-action="Index">Yönetim</a>
             <a class="py-2 d-none d-md-inline-block" asp-controller="LoginSign" asp-action="Index">Giriş Yap/Kayıt Ol</a>
-            <a class="py-2 d-none d-md-inline-block" href="#">Cart</a>
+            <a class="py-2 d-none d-md-inline-block" asp-controller="Home" asp-action="Details">Cart</a>
         </nav>
     </header>
     <div class="">
@@ -98,6 +98,7 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

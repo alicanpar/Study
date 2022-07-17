@@ -1,0 +1,94 @@
+﻿@model Study.Models.ViewModels.ProductVM
+<form method="post" asp-action="Upsert" enctype="multipart/form-data">
+    <input asp-for="Product.Id" hidden />
+    <input asp-for="Product.ImageUrl" hidden />
+    <div class="row">
+        <div class="col-10">
+            <div class="border p-3 mt-4 row text-black">
+                <div class="col-12 pb-2">
+                    <h2 class="text-parimary">Ürün @(Model.Product.Id!=0?"Güncelle":"Ekle")</h2> <br />
+                </div>
+                @*@<div asp-validation-summary="All"></div>*@
+                <div class="mb-3">
+                    <label asp-for="Product.Name">Model</label>
+                    <input asp-for="Product.Name" class="form-control" />
+                    <span asp-validation-for="Product.Name" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Product.SerialNumber">Seri Numarası</label>
+                    <input asp-for="Product.SerialNumber" class="form-control" />
+                    <span asp-validation-for="Product.SerialNumber" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-6">
+                    <label asp-for="Product.ImeiCode">Imei Kodu</label>
+                    <input asp-for="Product.ImeiCode" class="form-control" />
+                    <span asp-validation-for="Product.ImeiCode" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-6">
+                    <label asp-for="Product.Color">Renk</label>
+                    <input asp-for="Product.Color" class="form-control" />
+                    <span asp-validation-for="Product.Color" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-6">
+                    <label asp-for="Product.Mark">Marka</label>
+                    <input asp-for="Product.Mark" class="form-control" />
+                    <span asp-validation-for="Product.Mark" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-6">
+                    <label asp-for="Product.Size">Ekran Boyutu</label>
+                    <input asp-for="Product.Size" class="form-control" />
+                    <span asp-validation-for="Product.Size" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-6">
+                    <label asp-for="Product.Price">Fiyat</label>
+                    <input asp-for="Product.Price" class="form-control" />
+                    <span asp-validation-for="Product.Price" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Product.ImageUrl"></label>
+                    <input type="file" id="uploadBox" name="file" class="form-control" />
+                </div>
+                <div class="mb-3 col-6">
+                    <label asp-for="Product.ProductCategoryId">Ürün Türü</label>
+                    <select asp-for="Product.ProductCategoryId" asp-items="@Model.ProductCategoryList" class="form-select">
+                        <option disabled selected>--Select Category--</option>
+                    </select>
+                    <span asp-validation-for="Product.ProductCategoryId" class="text-danger"></span>
+                </div>
+                <div class="col-12">
+                    @if (Model.Product.Id != 0)
+                    {
+                        <button type="submit" onclick="return ValidateInput()" class="custom-btn btn-16" style="width:150px">Güncelle</button>
+                    }
+                    else
+                    {
+                        <button type="submit" onclick="return ValidateInput()" class="custom-btn btn-16" style="width:150px">Kaydet</button>
+                    }
+
+                    <a asp-controller="Dashboard" asp-action="Index" class="custom-btn btn-16" style="width:150px">Ana Sayfaya Geri Dön</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-2">
+            <img src="@Model.Product.ImageUrl" width="100%" style="border-radius:5px; border:1px solid #bbb9b9" />
+        </div>
+    </div>
+
+</form>
+@section scripts
+    {
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+    }
+    @*    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'a11ychecker advcode casechange export formatpainter image editimage linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tableofcontents tinycomments tinymcespellchecker',
+            toolbar: 'a11ycheck addcomment showcomments casechange checklist code export formatpainter image editimage pageembed permanentpen table tableofcontents',
+            toolbar_mode: 'floating',
+            tinycomments_mode: 'embedded',
+            tinycomments_author: 'Author name',
+        });
+
+    </script>*@

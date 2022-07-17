@@ -18,7 +18,23 @@ namespace Study.DataAccess.Repository
         }
         public void Update(Product obj)
         {
-            throw new NotImplementedException();
+            var objProductFromDb = _db.Products.FirstOrDefault(u => u.Id == obj.Id);
+            if (objProductFromDb != null)
+            {
+                objProductFromDb.Name = obj.Name;
+                objProductFromDb.SerialNumber = obj.SerialNumber;
+                objProductFromDb.ImeiCode = obj.ImeiCode;
+                objProductFromDb.Color = obj.Color;
+                objProductFromDb.Mark = obj.Mark;
+                objProductFromDb.Size = obj.Size;
+                objProductFromDb.Price = obj.Price;
+                objProductFromDb.ProductCategoryId = obj.ProductCategoryId;
+                if (obj.ImageUrl != null)
+                {
+                    objProductFromDb.ImageUrl = obj.ImageUrl;
+                }
+            }
+
         }
         //{
         //    var objFromDb = _db.Products.FirstOrDefault(u => u.Id == obj.Id);

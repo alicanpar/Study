@@ -1,0 +1,25 @@
+﻿
+    <div class="container">
+        <div class="row">
+            <partial name="_Upsert" />
+        </div>
+    </div>
+    @section scripts
+    {
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+    <script>
+        function ValidateInput() {
+            if (document.getElementById("uploadBox").value == "") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Resim Alanı Boş Bırakılamaz!',
+                });
+                return false;
+            }
+            return true;
+        }
+    </script>
+    }

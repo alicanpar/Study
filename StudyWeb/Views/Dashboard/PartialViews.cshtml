@@ -1,8 +1,8 @@
-﻿
+﻿@*
 <div class="container">
-    <div class="row">
+    <div class="row">*@
         @*<partial name="_ProductCategoryUpdate" />*@
-        @{
+        @*@{
             string CurrentReq = Convert.ToString(Context.Request.HttpContext.Request.RouteValues["Action"]);
             if (CurrentReq=="ProductCategoryUpdate")
             {
@@ -16,6 +16,6 @@
             {
                 <partial name="_ProductCategoryCreate" />
             }
-        }
-    </div>
-</div>
+        }*@
+@*    </div>
+</div>*@

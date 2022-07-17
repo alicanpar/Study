@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="~/StudyWeb.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/Product.css" asp-append-version="true" />
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/product/">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
     <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content= ="IE=edge" />
@@ -41,7 +44,7 @@
                     </a>
                 </li>
                 <li>
-                    <a asp-controller="Contactus" asp-action="Index">
+                    <a asp-controller="Home" asp-action="Contactus">
                         <i class="fa fa-envelope-o fa-lg"></i>
                         <span class="nav-text">Contact</span>
                     </a>
@@ -95,29 +98,29 @@
                         <span class="nav-text">Ürün Kategori Listele</span>
                     </a>
                 </li>
-                <li class="darkerli">
-                    <a href="">
+@*                <li class="darkerli">
+                    <a href="@Url.Action("ProductCreate","Dashboard")">
                         <i class="fa fa-shopping-cart"></i>
                         <span class="nav-text">Ürün Ekle</span>
                     </a>
                 </li>
                 <li class="darkerli">
-                    <a href="">
+                    <a href="@Url.Action("ProductDelete","Dashboard")">
                         <i class="fa fa-microphone fa-lg"></i>
                         <span class="nav-text">Ürün Sil</span>
                     </a>
                 </li>
                 <li class="darkerli">
-                    <a href="">
+                    <a href="@Url.Action("ProductUpdate","Dashboard")">
                         <i class="fa fa-flask fa-lg"></i>
                         <span class="nav-text">Ürün Düzenle</span>
                     </a>
-                </li>                
+                </li> *@               
                 <li class="darkerli">
-                    <a href="">
+                    <a href="@Url.Action("Index","Product")">
                         <i class="fa fa-align-left fa-lg"></i>
                         <span class="nav-text">
-                            Ürünleri Listele
+                            Ürünler
                         </span>
                     </a>
                 </li>
@@ -163,6 +166,7 @@
     </nav>
     <div class="">
         <main role="main" class="pb-3">
+            <partial name="_Notification" />
             @RenderBody()
         </main>
     </div>
@@ -172,6 +176,8 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
