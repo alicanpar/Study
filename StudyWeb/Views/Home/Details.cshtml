@@ -12,9 +12,9 @@
                 <div class="column-xs-12">
                     <nav>
                         <ol class="breadcrumb-list">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Household Plants</a></li>
-                            <li class="breadcrumb-item active">Bonsai</li>
+                            <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Home</a></li>
+                            @*<li class="breadcrumb-item"><a href="#">Household Plants</a></li>
+                            <li class="breadcrumb-item active">Bonsai</li>*@
                         </ol>
                     </nav>
                 </div>
@@ -23,44 +23,46 @@
                 <div class="column-xs-12 column-md-7">
                     <div class="product-gallery">
                         <div class="product-image">
-                            <img class="active" src="https://source.unsplash.com/W1yjvf5idqA">
+                            <img class="active" src="@Model.Product.ImageUrl">
                         </div>
                         <ul class="image-list">
-                            <li class="image-item"><img src="https://source.unsplash.com/W1yjvf5idqA"></li>
-                            <li class="image-item"><img src="https://source.unsplash.com/VgbUxvW3gS4"></li>
-                            <li class="image-item"><img src="https://source.unsplash.com/5WbYFH0kf_8"></li>
+                            <li class="image-item"><img src="@Model.Product.ImageUrl"></li>
+                            <li class="image-item"><img src=""></li>
+                            <li class="image-item"><img src=""></li>
                         </ul>
                     </div>
                 </div>
                 <div class="column-xs-12 column-md-5">
-                    <h1>Bonsai</h1>
-                    <h2>$19.99</h2>
+                    <h1>@Model.Product.Mark</h1>
+                    <h2>@Model.Product.Name</h2>
+                    <h3>@Model.Product.Price.ToString("c")</h3>
                     <div class="description">
-                        <p>The purposes of bonsai are primarily contemplation for the viewer, and the pleasant exercise of effort and ingenuity for the grower.</p>
-                        <p>By contrast with other plant cultivation practices, bonsai is not intended for production of food or for medicine. Instead, bonsai practice focuses on long-term cultivation and shaping of one or more small trees growing in a container.</p>
+                        <p>Ürün tanıtımı paragraf...1.</p>
+                        <p>Ürün tanıtımı paragraf...2.</p>
+                        <p>Adet: <div class="col-10"><input asp-for="Count" class="form-control" /></div></p>
                     </div>
-                    <button class="add-to-cart">Add To Cart</button>
+                    <button type="submit" value="Add To Cart" class="add-to-cart">Sepete Ekle</button>
                 </div>
             </div>
             <div class="grid related-products">
                 <div class="column-xs-12">
-                    <h3>You may also like</h3>
+                    <h3>Bunları da beğenebilirsiniz</h3>
+                </div>
+                @*<div class="column-xs-12 column-md-4">
+                <img src="https://source.unsplash.com/miziNqvJx5M">
+                <h4>Succulent</h4>
+                <p class="price">$19.99</p>
                 </div>
                 <div class="column-xs-12 column-md-4">
-                    <img src="https://source.unsplash.com/miziNqvJx5M">
-                    <h4>Succulent</h4>
-                    <p class="price">$19.99</p>
+                <img src="https://source.unsplash.com/2y6s0qKdGZg">
+                <h4>Terranium</h4>
+                <p class="price">$19.99</p>
                 </div>
                 <div class="column-xs-12 column-md-4">
-                    <img src="https://source.unsplash.com/2y6s0qKdGZg">
-                    <h4>Terranium</h4>
-                    <p class="price">$19.99</p>
-                </div>
-                <div class="column-xs-12 column-md-4">
-                    <img src="https://source.unsplash.com/6Rs76hNbIWE">
-                    <h4>Cactus</h4>
-                    <p class="price">$19.99</p>
-                </div>
+                <img src="https://source.unsplash.com/6Rs76hNbIWE">
+                <h4>Cactus</h4>
+                <p class="price">$19.99</p>
+                </div>*@
             </div>
         </div>
     </main>

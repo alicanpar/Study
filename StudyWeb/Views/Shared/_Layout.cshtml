@@ -18,8 +18,8 @@
             <a class="py-2" asp-controller="Home" asp-action="Index" aria-label="Product">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mx-auto" role="img" viewBox="0 0 24 24"><title>Product</title><circle cx="12" cy="12" r="10" /><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94" /></svg>
             </a>
-            <a class="py-2 d-none d-md-inline-block" href="#">Telefon</a>
-            <a class="py-2 d-none d-md-inline-block" href="#">Tablet</a>
+            <a class="py-2 d-none d-md-inline-block" href="@Url.Action("Telefon","Home")">Telefon</a>
+            <a class="py-2 d-none d-md-inline-block" href="@Url.Action("Tablet","Home")">Tablet</a>
             <a class="py-2 d-none d-md-inline-block" href="#">Laptop</a>
             <a class="py-2 d-none d-md-inline-block" href="#">Monitör</a>
             &nbsp;&nbsp;&nbsp;
@@ -30,7 +30,7 @@
             </div>
             <a class="py-2 d-none d-md-inline-block" asp-controller="Dashboard" asp-action="Index">Yönetim</a>
             <a class="py-2 d-none d-md-inline-block" asp-controller="LoginSign" asp-action="Index">Giriş Yap/Kayıt Ol</a>
-            <a class="py-2 d-none d-md-inline-block" asp-controller="Home" asp-action="Details">Cart</a>
+            <a class="py-2 d-none d-md-inline-block" asp-controller="Cart" asp-action="Index">Cart @*@await Component.InvokeAsync("ShoppingCart")*@</a>
         </nav>
     </header>
     <div class="">
@@ -40,59 +40,59 @@
     </div>
 
     <footer class="footer  py-5" style="background-color:#d9d9d98f">
-     <div class="container">
+        <div class="container">
             <div class="row">
-            <div class="col-12 col-md">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2" role="img" viewBox="0 0 24 24"><title>Product</title><circle cx="12" cy="12" r="10" /><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94" /></svg>
-                <span class="d-block mb-3 text-muted">&copy; 2022</span>
-            </div>
-            <div class="col-6 col-md">
-                <h5>Telefon</h5>
-                <ul class="list-unstyled text-small">
-                    <li><a class="link-secondary" href="#">Samsung</a></li>
-                    <li><a class="link-secondary" href="#">Xiaomi</a></li>
-                    <li><a class="link-secondary" href="#">Apple</a></li>
-                    <li><a class="link-secondary" href="#">Oppo</a></li>
-                    <li><a class="link-secondary" href="#">Huawei</a></li>
-                </ul>
-            </div>
-            <div class="col-6 col-md">
-                <h5>Tablet</h5>
-                <ul class="list-unstyled text-small">
-                    <li><a class="link-secondary" href="#">Samsung</a></li>
-                    <li><a class="link-secondary" href="#">Apple</a></li>
-                    <li><a class="link-secondary" href="#">Huawei</a></li>
-                    <li><a class="link-secondary" href="#">Diğer</a></li>
-                </ul>
-            </div>
-            <div class="col-6 col-md">
-                <h5>Monitör</h5>
-                <ul class="list-unstyled text-small">
-                    <li><a class="link-secondary" href="#">Msi</a></li>
-                    <li><a class="link-secondary" href="#">Asus</a></li>
-                    <li><a class="link-secondary" href="#">Lg</a></li>
-                    <li><a class="link-secondary" href="#">Viewsonic</a></li>
-                </ul>
-            </div>
-            <div class="col-6 col-md">
-                <h5>Laptop</h5>
-                <ul class="list-unstyled text-small">
-                    <li><a class="link-secondary" href="#">Msi</a></li>
-                    <li><a class="link-secondary" href="#">Asus</a></li>
-                    <li><a class="link-secondary" href="#">Dell</a></li>
-                    <li><a class="link-secondary" href="#">Acer</a></li>
-                </ul>
+                <div class="col-12 col-md">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2" role="img" viewBox="0 0 24 24"><title>Product</title><circle cx="12" cy="12" r="10" /><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94" /></svg>
+                    <span class="d-block mb-3 text-muted">&copy; 2022</span>
                 </div>
-            <div class="col-6 col-md">
-                <h5>Hakkımızda</h5>
-                <ul class="list-unstyled text-small">
-                    <li><a class="link-secondary" href="#">Şirket</a></li>
-                    <li><a class="link-secondary" href="#">Biz Kimiz?</a></li>
-                    <li><a class="link-secondary" asp-controller="Home" asp-action="Contactus">İletişim</a></li>
-                </ul>
+                <div class="col-6 col-md">
+                    <h5>Telefon</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a class="link-secondary" href="#">Samsung</a></li>
+                        <li><a class="link-secondary" href="#">Xiaomi</a></li>
+                        <li><a class="link-secondary" href="#">Apple</a></li>
+                        <li><a class="link-secondary" href="#">Oppo</a></li>
+                        <li><a class="link-secondary" href="#">Huawei</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>Tablet</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a class="link-secondary" href="#">Samsung</a></li>
+                        <li><a class="link-secondary" href="#">Apple</a></li>
+                        <li><a class="link-secondary" href="#">Huawei</a></li>
+                        <li><a class="link-secondary" href="#">Diğer</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>Monitör</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a class="link-secondary" href="#">Msi</a></li>
+                        <li><a class="link-secondary" href="#">Asus</a></li>
+                        <li><a class="link-secondary" href="#">Lg</a></li>
+                        <li><a class="link-secondary" href="#">Viewsonic</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>Laptop</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a class="link-secondary" href="#">Msi</a></li>
+                        <li><a class="link-secondary" href="#">Asus</a></li>
+                        <li><a class="link-secondary" href="#">Dell</a></li>
+                        <li><a class="link-secondary" href="#">Acer</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>Hakkımızda</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a class="link-secondary" href="#">Şirket</a></li>
+                        <li><a class="link-secondary" href="#">Biz Kimiz?</a></li>
+                        <li><a class="link-secondary" asp-controller="Home" asp-action="Contactus">İletişim</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
-     </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

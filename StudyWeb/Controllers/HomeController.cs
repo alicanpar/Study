@@ -33,11 +33,26 @@ namespace StudyWeb.Controllers
         {
             return View();
         }
-        public IActionResult Details()
+        public IActionResult Details(int productId)
         {
-            return View();
+            ShoppingCart cartObj = new()
+            {
+                Count = 1,
+                ProductId = productId,
+                Product = _unitOfWork.Products.GetFirstOrDefault(u => u.Id == productId, includeProperties: "ProductCategory")
+            };
+            return View(cartObj);
         }
-
+        public IActionResult Telefon()
+        {
+            IEnumerable<Product> productListTelefon = _unitOfWork.Products.GetAll().Where(u => u.ProductCategoryId == 11);
+            return View(productListTelefon);
+        }
+        public IActionResult Tablet()
+        {
+            IEnumerable<Product> productListTablet = _unitOfWork.Products.GetAll().Where(u => u.ProductCategoryId == 13);
+            return View(productListTablet);
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

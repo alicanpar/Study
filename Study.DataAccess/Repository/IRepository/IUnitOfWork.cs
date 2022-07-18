@@ -12,6 +12,9 @@ namespace Study.DataAccess.Repository.IRepository
         IProductCategoryRepository ProductCategory { get; }
         ICompanyRepository Company { get; }
         IProductRepository Products { get; }
+        IShoppingCartRepository  ShoppingCarts { get; }
+        IOrderHeaderRepository OrderHeaders { get; }
+        IOrderDetailRepository OrderDetails { get; }
         void Save();
     }
 }
