@@ -3,6 +3,7 @@ using Study.DataAccess.Repository.IRepository;
 using System.Diagnostics;
 using Study.Models;
 using System.Security.Claims;
+using Study.Utility;
 
 namespace StudyWeb.Controllers
 {
@@ -45,26 +46,26 @@ namespace StudyWeb.Controllers
             return View(cartObj);
         }
         [HttpPost]
-        public IActionResult Details(ShoppingCart shoppingCart)
-        {
-            var claimsIdentity = (ClaimsIdentity)User.Identity;
-            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
-            shoppingCart.ApplicationUserId = claim.Value;
-            ShoppingCart cartFromDb = _unitOfWork.ShoppingCarts.GetFirstOrDefault(u => u.ApplicationUserId == claim.Value && u.ProductId == shoppingCart.ProductId);
-            if(cartFromDb == null)
-            {
-                _unitOfWork.ShoppingCarts.Add(shoppingCart);
-                _unitOfWork.Save();
-                TempData["success"] = "Ürün Sepete Eklendi";
-                //HttpContext.Session.SetInt32(SD.SessionCart, _unitOfWork.ShoppingCarts.GetAll(u => u.ApplicationUserId == claim.Value).ToList().Count);
-            }
-            else
-            {
-                _unitOfWork.ShoppingCarts.IncrementCount(cartFromDb, shoppingCart.Count);
-                _unitOfWork.Save();
-            }
-            return RedirectToAction(nameof(Index));
-        }
+        //public IActionResult Details(ShoppingCart shoppingCart)
+        //{            
+        //    var claimsIdentity = _unitOfWork.ApplicationUsers.GetFirstOrDefault(u => u.Id == shoppingCart.Id);
+        //    var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+        //    shoppingCart.ApplicationUserId = claim.Value;
+        //    ShoppingCart cartFromDb = _unitOfWork.ShoppingCarts.GetFirstOrDefault(u => u.ApplicationUserId == claim.Value && u.ProductId == shoppingCart.ProductId);
+        //    if (cartFromDb == null)
+        //    {
+        //        _unitOfWork.ShoppingCarts.Add(shoppingCart);
+        //        _unitOfWork.Save();
+        //        TempData["success"] = "Ürün Sepete Eklendi";
+        //        HttpContext.Session.SetInt32(SD.SessionCart, _unitOfWork.ShoppingCarts.GetAll(u => u.ApplicationUserId == claim.Value).ToList().Count);
+        //    }
+        //    else
+        //    {
+        //        _unitOfWork.ShoppingCarts.IncrementCount(cartFromDb, shoppingCart.Count);
+        //        _unitOfWork.Save();
+        //    }
+        //    return RedirectToAction(nameof(Index));
+        //}
         public IActionResult ProductFiltre(string id)
         {
             if (id == "telefon")
