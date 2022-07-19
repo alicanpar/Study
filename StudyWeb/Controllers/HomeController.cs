@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Study.DataAccess.Repository.IRepository;
-using Study.Models;
 using System.Diagnostics;
+using Study.Models;
+using System.Security.Claims;
 
 namespace StudyWeb.Controllers
 {
@@ -43,15 +44,60 @@ namespace StudyWeb.Controllers
             };
             return View(cartObj);
         }
-        public IActionResult Telefon()
+        [HttpPost]
+        public IActionResult Details(ShoppingCart shoppingCart)
         {
-            IEnumerable<Product> productListTelefon = _unitOfWork.Products.GetAll().Where(u => u.ProductCategoryId == 11);
-            return View(productListTelefon);
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            shoppingCart.ApplicationUserId = claim.Value;
+            ShoppingCart cartFromDb = _unitOfWork.ShoppingCarts.GetFirstOrDefault(u => u.ApplicationUserId == claim.Value && u.ProductId == shoppingCart.ProductId);
+            if(cartFromDb == null)
+            {
+                _unitOfWork.ShoppingCarts.Add(shoppingCart);
+                _unitOfWork.Save();
+                TempData["success"] = "Ürün Sepete Eklendi";
+                //HttpContext.Session.SetInt32(SD.SessionCart, _unitOfWork.ShoppingCarts.GetAll(u => u.ApplicationUserId == claim.Value).ToList().Count);
+            }
+            else
+            {
+                _unitOfWork.ShoppingCarts.IncrementCount(cartFromDb, shoppingCart.Count);
+                _unitOfWork.Save();
+            }
+            return RedirectToAction(nameof(Index));
         }
-        public IActionResult Tablet()
+        public IActionResult ProductFiltre(string id)
         {
-            IEnumerable<Product> productListTablet = _unitOfWork.Products.GetAll().Where(u => u.ProductCategoryId == 13);
-            return View(productListTablet);
+            if (id == "telefon")
+            {//telefon
+                IEnumerable<Product> productList = _unitOfWork.Products.GetAll().Where(u => u.ProductCategoryId == 11);
+                return View(productList);
+            }
+            else if (id == "tablet")
+            {//tablet
+                IEnumerable<Product> productList = _unitOfWork.Products.GetAll().Where(u => u.ProductCategoryId == 13);
+                return View(productList);
+            }
+            else if(id=="telefon_samsung")
+            {//telefon ve samsung
+                IEnumerable<Product> productList = _unitOfWork.Products.GetAll().Where(u => u.Mark == "Samsung" && u.ProductCategoryId==11);
+                return View(productList);
+            }
+            else if (id == "telefon_apple")
+            {//telefon ve apple
+                IEnumerable<Product> productList = _unitOfWork.Products.GetAll().Where(u => u.Mark == "Apple" && u.ProductCategoryId==11);
+                return View(productList);
+            }
+            else if (id == "tablet_samsung")
+            {//tablet ve samsung
+                IEnumerable<Product> productList = _unitOfWork.Products.GetAll().Where(u => u.Mark == "Samsung" && u.ProductCategoryId == 13);
+                return View(productList);
+            }
+            else if (id == "tablet_apple")
+            {//tablet ve apple
+                IEnumerable<Product> productList = _unitOfWork.Products.GetAll().Where(u => u.Mark == "Apple" && u.ProductCategoryId == 13);
+                return View(productList);
+            }
+            return NotFound();
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

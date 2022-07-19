@@ -1,0 +1,192 @@
+﻿@model IEnumerable<Study.Models.Product>
+@{
+    ViewData["Title"] = "sdfh";
+}
+
+<style>
+
+    .filter-column-title {
+        background-color: #f1f1f1;
+        font-weight: 600;
+        font-size: 16px;
+        color: #222222;
+        padding: 0.4rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .filter-content > div {
+        padding: 1rem;
+        border-left: 1px solid #eaeaea;
+        border-right: 1px solid #eaeaea;
+        border-bottom: 1px solid #eaeaea;
+    }
+</style>
+<main>
+
+    <div class="container">
+        <div class="row pb-3">
+            <div class="col-md-3">
+
+                <div class="filter-wrapper">
+                    <div class="filter-column-title">
+                        <span class="pl-2"> KATEGORİ </span>
+
+                        <a class="filter-expand" data-bs-toggle="collapse" data-bs-target="#kategoriler" href="#kategoriler" role="button" aria-expanded="false" aria-controls="kategoriler">
+                            <i class="fas fa-plus"></i>
+                        </a>
+                    </div>
+                    <div class="filter-content collapse show" id="kategoriler" style="max-height: 256px; overflow-y: auto;">
+                        <div style="display:flex;flex-direction:column">
+                            <div class="custom-control custom-checkbox" id="category-filters" style="padding-left:2rem">
+                                <input type="checkbox" class="custom-control-input" id="telefon_101" name="categoryIds" value="232">
+                                <label class="custom-control-label" for="kategoriler_232">Telefon</label>
+                            </div>
+                            <div class="custom-control custom-checkbox" id="category-filters" style="padding-left:2rem">
+                                <input type="checkbox" class="custom-control-input" id="kategoriler_226" name="categoryIds" value="226" @*checked=""*@>
+                                <label class="custom-control-label" for="kategoriler_226">Tablet</label>
+                            </div>
+                            <div class="custom-control custom-checkbox" id="category-filters" style="padding-left:2rem">
+                                <input type="checkbox" class="custom-control-input" id="kategoriler_227" name="categoryIds" value="227">
+                                <label class="custom-control-label" for="kategoriler_227">Laptop</label>
+                            </div>
+                            <div class="custom-control custom-checkbox" id="category-filters" style="padding-left:2rem">
+                                <input type="checkbox" class="custom-control-input" id="kategoriler_225" name="categoryIds" value="225">
+                                <label class="custom-control-label" for="kategoriler_225">Monitör</label>
+                            </div>                            
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-wrapper">
+                    <div class="filter-column-title">
+                        <span class="pl-2"> FİYAT </span>
+
+                        <a class="filter-expand" data-bs-toggle="collapse" data-bs-target="#fiyat" href="#fiyat" role="button" aria-expanded="false" aria-controls="fiyat">
+                            <i class="fas fa-plus"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="filter-content collapse show" id="fiyat">
+                    <div>
+
+                        <label for="minPrice">Min</label>
+                        <input class="priceInput form-control" type="number" id="minPrice" name="minPrice" min="0" max="33776" placeholder="0">
+                        <label for="maxPrice" class="my-2">Max</label>
+                        <input class="priceInput form-control" type="number" id="maxPrice" name="maxPrice" min="0" max="33776" placeholder="33776">
+                        <button id="filterPriceBtn" class="btn btn-orange btn-block text-white my-3" disabled="disabled">Filtrele</button>
+                    </div>
+                </div>
+                <div class="filter-wrapper">
+                    <div class="filter-column-title">
+                        <span class="pl-2"> MARKALAR </span>
+
+                        <a class="filter-expand" data-bs-toggle="collapse" data-bs-target="#markalar" href="#markalar" role="button" aria-expanded="false" aria-controls="markalar">
+                            <i class="fas fa-plus"></i>
+                        </a>
+                    </div>
+                    <div class="filter-content collapse show" id="markalar" style="max-height: 256px; overflow-y: auto;">
+                        <div>
+
+                            <div class="custom-control custom-checkbox" id="brand-filters" style="padding-left:2rem">
+                                <input type="checkbox" class="custom-control-input" id="markalar_0" name="brands" value="AKRAPOVIC">
+                                <label class="custom-control-label" for="markalar_0">Samsung</label>
+                            </div>
+                            <div class="custom-control custom-checkbox" id="brand-filters" style="padding-left:2rem">
+                                <input type="checkbox" class="custom-control-input" id="markalar_1" name="brands" value="ALPINESTARS">
+                                <label class="custom-control-label" for="markalar_1">Apple</label>
+                            </div>                            
+                        </div>
+
+                    </div>
+                </div>
+                <div class="filter-wrapper">
+                    <div class="filter-column-title">
+                        <span class="pl-2"> Renkler </span>
+
+                        <a class="filter-expand" data-bs-toggle="collapse" data-bs-target="#color" href="#color" role="button" aria-expanded="false" aria-controls="color">
+                            <i class="fas fa-plus"></i>
+                        </a>
+                    </div>
+                    <div class="filter-content collapse show" id="color" style="max-height: 256px; overflow-y: auto;">
+                        <div>
+
+                            <div class="custom-control custom-checkbox" id="brand-filters" style="padding-left:2rem">
+                                <input type="checkbox" class="custom-control-input" id="markalar_0" name="brands" value="AKRAPOVIC">
+                                <label class="custom-control-label" for="markalar_0">Mavi</label>
+                            </div>
+                            <div class="custom-control custom-checkbox" id="brand-filters" style="padding-left:2rem">
+                                <input type="checkbox" class="custom-control-input" id="markalar_1" name="brands" value="ALPINESTARS">
+                                <label class="custom-control-label" for="markalar_1">Mor</label>
+                            </div>
+                            <div class="custom-control custom-checkbox" id="brand-filters" style="padding-left:2rem">
+                                <input type="checkbox" class="custom-control-input" id="markalar_2" name="brands" value="HJC">
+                                <label class="custom-control-label" for="markalar_2">Siyah</label>
+                            </div>
+                            <div class="custom-control custom-checkbox" id="brand-filters" style="padding-left:2rem">
+                                <input type="checkbox" class="custom-control-input" id="markalar_3" name="brands" value="IPONE">
+                                <label class="custom-control-label" for="markalar_3">Beyaz</label>
+                            </div>                            
+                        </div>
+
+                    </div>
+                </div>
+                <div class="filter-wrapper">
+                    <div class="filter-column-title">
+                        <span class="pl-2"> Ekran Boyutları </span>
+
+                        <a class="filter-expand" data-bs-toggle="collapse" data-bs-target="#size" href="#size" role="button" aria-expanded="false" aria-controls="size">
+                            <i class="fas fa-plus"></i>
+                        </a>
+                    </div>
+                    <div class="filter-content collapse show" id="size" style="max-height: 256px; overflow-y: auto;">
+                        <div>
+
+                            <div class="custom-control custom-checkbox" id="brand-filters" style="padding-left:2rem">
+                                <input type="checkbox" class="custom-control-input" id="markalar_0" name="brands" value="AKRAPOVIC">
+                                <label class="custom-control-label" for="markalar_0">5</label>
+                            </div>
+                            <div class="custom-control custom-checkbox" id="brand-filters" style="padding-left:2rem">
+                                <input type="checkbox" class="custom-control-input" id="markalar_1" name="brands" value="ALPINESTARS">
+                                <label class="custom-control-label" for="markalar_1">6</label>
+                            </div>
+                            <div class="custom-control custom-checkbox" id="brand-filters" style="padding-left:2rem">
+                                <input type="checkbox" class="custom-control-input" id="markalar_2" name="brands" value="HJC">
+                                <label class="custom-control-label" for="markalar_2">7</label>
+                            </div>
+                            <div class="custom-control custom-checkbox" id="brand-filters" style="padding-left:2rem">
+                                <input type="checkbox" class="custom-control-input" id="markalar_3" name="brands" value="IPONE">
+                                <label class="custom-control-label" for="markalar_3">4</label>
+                            </div>                            
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="row pb-3">
+                    @foreach (var product in Model)
+                    {
+                        <div class="col-md-4">
+                            <div class="row pb-2">
+                                <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+                                    <div class="bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+                                        <div class="my-3 py-3">
+                                            <h2 class="display-5">@product.Mark</h2>
+                                            <p class="lead">@product.Name</p>
+                                            <div class="text-secondary">
+                                                <a asp-action="Details" class="custom-btn btn-5 form-control" asp-route-productId="@product.Id">Satın Al</a>
+                                            </div>
+                                        </div>
+                                        <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"><img src="@product.ImageUrl" /></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+

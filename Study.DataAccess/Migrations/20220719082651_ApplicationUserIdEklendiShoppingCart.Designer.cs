@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Study.DataAccess;
 
@@ -11,9 +12,10 @@ using Study.DataAccess;
 namespace Study.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220719082651_ApplicationUserIdEklendiShoppingCart")]
+    partial class ApplicationUserIdEklendiShoppingCart
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,7 +56,7 @@ namespace Study.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ApplicationUser", (string)null);
+                    b.ToTable("ApplicationUser");
                 });
 
             modelBuilder.Entity("Study.Models.OrderDetail", b =>
@@ -83,7 +85,7 @@ namespace Study.DataAccess.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("OrderDetails", (string)null);
+                    b.ToTable("OrderDetails");
                 });
 
             modelBuilder.Entity("Study.Models.OrderHeader", b =>
@@ -150,7 +152,7 @@ namespace Study.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("OrderHeaders", (string)null);
+                    b.ToTable("OrderHeaders");
                 });
 
             modelBuilder.Entity("Study.Models.Product", b =>
@@ -196,7 +198,7 @@ namespace Study.DataAccess.Migrations
 
                     b.HasIndex("ProductCategoryId");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Study.Models.ProductCategory", b =>
@@ -213,7 +215,7 @@ namespace Study.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ProductCategories", (string)null);
+                    b.ToTable("ProductCategories");
                 });
 
             modelBuilder.Entity("Study.Models.ShoppingCart", b =>
@@ -241,7 +243,7 @@ namespace Study.DataAccess.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ShoppingCarts", (string)null);
+                    b.ToTable("ShoppingCarts");
                 });
 
             modelBuilder.Entity("Study.Models.OrderDetail", b =>

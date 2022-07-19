@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Study.DataAccess.Repository.IRepository;
-using Study.Models;
 using Study.Models.ViewModels;
 
 namespace StudyWeb.Controllers;

@@ -1,12 +1,5 @@
 ﻿using Study.DataAccess.Repository.IRepository;
 using Study.Models;
-using Study.Models.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Study.DataAccess.Repository
 {
     public class OrderHeaderRepository : Repository<OrderHeader>, IOrderHeaderRepository

@@ -4,7 +4,7 @@ using Study.Models;
 
 namespace StudyWeb.Controllers
 {
-    
+
     public class DashboardController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

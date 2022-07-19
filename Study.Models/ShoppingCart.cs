@@ -14,6 +14,7 @@ namespace Study.Models
         [Range(1, 10, ErrorMessage = "Değer aralığı 1-10 arası olmalıdır.")]
         public int Count { get; set; }
         public double Price { get; set; }
+        public string ApplicationUserId { get; set; }
 
     }
 }

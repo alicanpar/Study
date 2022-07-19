@@ -1,0 +1,139 @@
+﻿@model IEnumerable<Study.Models.Product>
+@{
+    
+}
+<style>
+    
+[data-toggle=collapse] {
+  cursor: pointer;
+}
+
+.parent-collapsed {
+  display: none;
+}
+
+.collapsed .parent-expanded {
+  display: none;
+}
+.collapsed .parent-collapsed {
+  display: inline-block;
+}
+</style>
+<main>
+    <div class="row pb-3">
+        <div id="filter-sidebar" class="col-xs-6 col-sm-3 visible-sm visible-md visible-lg collapse sliding-sidebar">
+
+            <div>
+                <h4 data-toggle="collapse" data-target="#group-1">
+                    <i class="fa fa-fw fa-caret-down parent-expanded"></i>
+                    <i class="fa fa-fw fa-caret-right parent-collapsed"></i>
+                    Artist
+                </h4>
+                <div id="group-1" class="list-group collapse in">
+                    <a class="list-group-item" href="#">
+                        <span class="badge">3</span> John Lennon
+                    </a>
+                    <a class="list-group-item" href="#">
+                        <span class="badge">3</span> John Lennon
+                    </a>
+                    <a class="list-group-item" href="#">
+                        <span class="badge">3</span> John Lennon
+                    </a>
+                    <a class="list-group-item" href="#">
+                        <span class="badge">3</span> John Lennon
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <h4 data-toggle="collapse" data-target="#group-2">
+                    <i class="fa fa-fw fa-caret-down parent-expanded"></i>
+                    <i class="fa fa-fw fa-caret-right parent-collapsed"></i>
+                    Artist
+                </h4>
+                <div id="group-2" class="list-group collapse in">
+                    <a class="list-group-item" href="#">
+                        <span class="badge">3</span> John Lennon
+                    </a>
+                    <a class="list-group-item" href="#">
+                        <span class="badge">3</span> John Lennon
+                    </a>
+                    <a class="list-group-item" href="#">
+                        <span class="badge">3</span> John Lennon
+                    </a>
+                    <a class="list-group-item" href="#">
+                        <span class="badge">3</span> John Lennon
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <h4 data-toggle="collapse" data-target="#group-3">
+                    <i class="fa fa-fw fa-caret-down parent-expanded"></i>
+                    <i class="fa fa-fw fa-caret-right parent-collapsed"></i>
+                    Artist
+                </h4>
+                <div id="group-3" class="list-group collapse in">
+                    <a class="list-group-item" href="#">
+                        <span class="badge">3</span> John Lennon
+                    </a>
+                    <a class="list-group-item" href="#">
+                        <span class="badge">3</span> John Lennon
+                    </a>
+                    <a class="list-group-item" href="#">
+                        <span class="badge">3</span> John Lennon
+                    </a>
+                    <a class="list-group-item" href="#">
+                        <span class="badge">3</span> John Lennon
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <h4 data-toggle="collapse" data-target="#group-4">
+                    <i class="fa fa-fw fa-caret-down parent-expanded"></i>
+                    <i class="fa fa-fw fa-caret-right parent-collapsed"></i>
+                    Artist
+                </h4>
+                <div id="group-4" class="list-group collapse in">
+                    <a class="list-group-item" href="#">
+                        <span class="badge">3</span> John Lennon
+                    </a>
+                    <a class="list-group-item" href="#">
+                        <span class="badge">3</span> John Lennon
+                    </a>
+                    <a class="list-group-item" href="#">
+                        <span class="badge">3</span> John Lennon
+                    </a>
+                    <a class="list-group-item" href="#">
+                        <span class="badge">3</span> John Lennon
+                    </a>
+                </div>
+            </div>
+
+        </div>  
+   <div class="col-md-9">
+        <div class="row pb-3">
+       @foreach (var product in Model)
+        {
+            <div class="col-md-12">
+                <div class="row pb-2">
+                    <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+                        <div class="bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+                            <div class="my-3 py-3">
+                                <h2 class="display-5">@product.Mark</h2>
+                                <p class="lead">@product.Name</p>
+                                <div class="text-secondary">
+                                    <a asp-action="Details" class="custom-btn btn-5 form-control" asp-route-productId="@product.Id">Satın Al</a>
+                                </div>
+                            </div>
+                            <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"><img src="@product.ImageUrl" /></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+   </div>
+   </div>
+    </div>
+</main>
