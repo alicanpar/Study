@@ -8,7 +8,7 @@ namespace Study.DataAccess.Repository.IRepository
         IShoppingCartRepository ShoppingCarts { get; }
         IOrderHeaderRepository OrderHeaders { get; }
         IOrderDetailRepository OrderDetails { get; }
-        IApplicationUserRepository ApplicationUsers { get; }
+        //IApplicationUserRepository ApplicationUsers { get; }
         void Save();
     }
 }

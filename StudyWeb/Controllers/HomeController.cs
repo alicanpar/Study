@@ -46,26 +46,38 @@ namespace StudyWeb.Controllers
             return View(cartObj);
         }
         [HttpPost]
-        //public IActionResult Details(ShoppingCart shoppingCart)
-        //{            
-        //    var claimsIdentity = _unitOfWork.ApplicationUsers.GetFirstOrDefault(u => u.Id == shoppingCart.Id);
-        //    var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
-        //    shoppingCart.ApplicationUserId = claim.Value;
-        //    ShoppingCart cartFromDb = _unitOfWork.ShoppingCarts.GetFirstOrDefault(u => u.ApplicationUserId == claim.Value && u.ProductId == shoppingCart.ProductId);
-        //    if (cartFromDb == null)
-        //    {
-        //        _unitOfWork.ShoppingCarts.Add(shoppingCart);
-        //        _unitOfWork.Save();
-        //        TempData["success"] = "Ürün Sepete Eklendi";
-        //        HttpContext.Session.SetInt32(SD.SessionCart, _unitOfWork.ShoppingCarts.GetAll(u => u.ApplicationUserId == claim.Value).ToList().Count);
-        //    }
-        //    else
-        //    {
-        //        _unitOfWork.ShoppingCarts.IncrementCount(cartFromDb, shoppingCart.Count);
-        //        _unitOfWork.Save();
-        //    }
-        //    return RedirectToAction(nameof(Index));
-        //}
+        public IActionResult Details(ShoppingCart shoppingCart)
+        {
+            var sessionCartId = HttpContext.Session.GetString("cartId");
+            Guid cartId;
+            if (string.IsNullOrEmpty(sessionCartId))
+            {
+                cartId = Guid.NewGuid();
+                HttpContext.Session.SetString("cartId", cartId.ToString());
+            }
+            else
+            {
+                cartId = Guid.Parse(sessionCartId);
+            }
+            
+            ShoppingCart cartFromDb = _unitOfWork.ShoppingCarts.GetFirstOrDefault(u => u.SessionGuid == cartId && u.ProductId == shoppingCart.ProductId);
+            if (cartFromDb == null)
+            {
+                shoppingCart.SessionGuid = cartId;
+                _unitOfWork.ShoppingCarts.Add(shoppingCart);
+                _unitOfWork.Save();
+                TempData["success"] = "Ürün Sepete Eklendi";
+                HttpContext.Session.SetInt32(SD.SessionCart, _unitOfWork.ShoppingCarts.GetAll(u => u.SessionGuid == cartId).ToList().Count);
+            }
+            else
+            {
+                _unitOfWork.ShoppingCarts.IncrementCount(cartFromDb, shoppingCart.Count);
+                TempData["success"] = "Ürün Sepete Eklendi";
+                _unitOfWork.Save();
+            }
+            
+            return RedirectToAction(nameof(Index));
+        }
         public IActionResult ProductFiltre(string id)
         {
             if (id == "telefon")
@@ -78,14 +90,14 @@ namespace StudyWeb.Controllers
                 IEnumerable<Product> productList = _unitOfWork.Products.GetAll().Where(u => u.ProductCategoryId == 13);
                 return View(productList);
             }
-            else if(id=="telefon_samsung")
+            else if (id == "telefon_samsung")
             {//telefon ve samsung
-                IEnumerable<Product> productList = _unitOfWork.Products.GetAll().Where(u => u.Mark == "Samsung" && u.ProductCategoryId==11);
+                IEnumerable<Product> productList = _unitOfWork.Products.GetAll().Where(u => u.Mark == "Samsung" && u.ProductCategoryId == 11);
                 return View(productList);
             }
             else if (id == "telefon_apple")
             {//telefon ve apple
-                IEnumerable<Product> productList = _unitOfWork.Products.GetAll().Where(u => u.Mark == "Apple" && u.ProductCategoryId==11);
+                IEnumerable<Product> productList = _unitOfWork.Products.GetAll().Where(u => u.Mark == "Apple" && u.ProductCategoryId == 11);
                 return View(productList);
             }
             else if (id == "tablet_samsung")

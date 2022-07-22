@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/StudyWeb.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/Product.css" asp-append-version="true" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/product/">
     <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -31,11 +33,12 @@
             </div>
             <a class="py-2 d-none d-md-inline-block" asp-controller="Dashboard" asp-action="Index">Yönetim</a>
             <a class="py-2 d-none d-md-inline-block" asp-controller="LoginSign" asp-action="Index">Giriş Yap/Kayıt Ol</a>
-            <a class="py-2 d-none d-md-inline-block" asp-controller="Cart" asp-action="Index">Cart @*@await Component.InvokeAsync("ShoppingCart")*@</a>
+            <a class="py-2 d-none d-md-inline-block" asp-controller="Cart" asp-action="Index">@await Component.InvokeAsync("ShoppingCart")</a>
         </nav>
     </header>
     <div class="">
         <main role="main" class="pb-3">
+            <partial name="_Notification" />
             @RenderBody()
         </main>
     </div>

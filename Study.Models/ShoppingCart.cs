@@ -13,8 +13,9 @@ namespace Study.Models
         public Product Product { get; set; }
         [Range(1, 10, ErrorMessage = "Değer aralığı 1-10 arası olmalıdır.")]
         public int Count { get; set; }
-        public double Price { get; set; }
-        public string ApplicationUserId { get; set; }
+        [NotMapped]
+        public double Price => Product?.Price ?? 0;
+        public Guid SessionGuid { get; set; }
 
     }
 }
