@@ -178,7 +178,7 @@
                             <span>Total cost</span>
                             <span>@((Model.OrderHeader.OrderTotal+((Model.OrderHeader.OrderTotal*18)/100)).ToString("c"))</span>
                         </div>
-                        <button type="submit" value="Summary"class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">Sepeti Onayla</button>
+                        <button type="submit" formmethod="get" asp-action="Summary" class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">Sepeti Onayla</button>
                     </div>
                 </div>
 

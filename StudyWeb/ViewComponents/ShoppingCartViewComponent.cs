@@ -19,7 +19,7 @@ namespace StudyWeb.ViewComponents
             if (string.IsNullOrEmpty(sessionCartId))
             {
                 cartId = Guid.NewGuid();
-                HttpContext.Response.Cookies.Append("cartId", cartId.ToString());
+                HttpContext.Response.Cookies.Append("cartId", cartId.ToString(), new CookieOptions { Expires = DateTime.Now.AddDays(3) });
             }
             else
             {

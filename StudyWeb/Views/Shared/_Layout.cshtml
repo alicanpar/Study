@@ -23,8 +23,8 @@
             </a>
             <a class="py-2 d-none d-md-inline-block" asp-controller="Home" asp-action="ProductFiltre" asp-route-id="telefon">Telefon</a>
             <a class="py-2 d-none d-md-inline-block" asp-controller="Home" asp-action="ProductFiltre" asp-route-id="tablet">Tablet</a>
-            <a class="py-2 d-none d-md-inline-block" href="#">Laptop</a>
-            <a class="py-2 d-none d-md-inline-block" href="#">Monitör</a>
+            <a class="py-2 d-none d-md-inline-block" asp-controller="Home" asp-action="ProductFiltre" asp-route-id="laptop">Laptop</a>
+            <a class="py-2 d-none d-md-inline-block" asp-controller="Home" asp-action="ProductFiltre" asp-route-id="monitor">Monitör</a>
             &nbsp;&nbsp;&nbsp;
             <a class="py-2 d-none d-md-inline-block nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hakkımızda</a>
             <div class="dropdown-menu">
@@ -70,7 +70,7 @@
                     </ul>
                 </div>
                 <div class="col-6 col-md">
-                    <h5>Monitör</h5>
+                    <h5><a asp-controller="Home" asp-action="ProductFiltre" asp-route-id="monitor">Monitör</a></h5>
                     <ul class="list-unstyled text-small">
                         <li><a class="link-secondary" href="#">Msi</a></li>
                         <li><a class="link-secondary" href="#">Asus</a></li>
@@ -79,10 +79,10 @@
                     </ul>
                 </div>
                 <div class="col-6 col-md">
-                    <h5>Laptop</h5>
+                    <h5><a asp-controller="Home" asp-action="ProductFiltre" asp-route-id="laptop">Laptop</a></h5>
                     <ul class="list-unstyled text-small">
                         <li><a class="link-secondary" href="#">Msi</a></li>
-                        <li><a class="link-secondary" href="#">Asus</a></li>
+                        <li><a class="link-secondary" asp-controller="Home" asp-action="ProductFiltre" asp-route-id="laptop_asus">Asus</a></li>
                         <li><a class="link-secondary" href="#">Dell</a></li>
                         <li><a class="link-secondary" href="#">Acer</a></li>
                     </ul>

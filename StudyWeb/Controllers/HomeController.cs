@@ -59,7 +59,7 @@ namespace StudyWeb.Controllers
             {
                 cartId = Guid.Parse(sessionCartId);
             }
-            
+
             ShoppingCart cartFromDb = _unitOfWork.ShoppingCarts.GetFirstOrDefault(u => u.SessionGuid == cartId && u.ProductId == shoppingCart.ProductId);
             if (cartFromDb == null)
             {
@@ -75,7 +75,7 @@ namespace StudyWeb.Controllers
                 TempData["success"] = "Ürün Sepete Eklendi";
                 _unitOfWork.Save();
             }
-            
+
             return RedirectToAction(nameof(Index));
         }
         public IActionResult ProductFiltre(string id)
@@ -88,6 +88,16 @@ namespace StudyWeb.Controllers
             else if (id == "tablet")
             {//tablet
                 IEnumerable<Product> productList = _unitOfWork.Products.GetAll().Where(u => u.ProductCategoryId == 13);
+                return View(productList);
+            }
+            else if (id == "laptop")
+            {//laptop
+                IEnumerable<Product> productList = _unitOfWork.Products.GetAll().Where(u => u.ProductCategoryId == 14);
+                return View(productList);
+            }
+            else if (id == "laptop")
+            {//laptop
+                IEnumerable<Product> productList = _unitOfWork.Products.GetAll().Where(u => u.ProductCategoryId == 15);
                 return View(productList);
             }
             else if (id == "telefon_samsung")
@@ -110,6 +120,12 @@ namespace StudyWeb.Controllers
                 IEnumerable<Product> productList = _unitOfWork.Products.GetAll().Where(u => u.Mark == "Apple" && u.ProductCategoryId == 13);
                 return View(productList);
             }
+            else if (id == "tablet_asus")
+            {//laptop ve asus
+                IEnumerable<Product> productList = _unitOfWork.Products.GetAll().Where(u => u.Mark == "Asus" && u.ProductCategoryId == 14);
+                return View(productList);
+            }
+
             return NotFound();
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
