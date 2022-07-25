@@ -17,12 +17,12 @@ namespace StudyWeb.Controllers
         }
         public IActionResult Index()
         {
-            var sessionCartId = HttpContext.Session.GetString("cartId");
+            var sessionCartId = HttpContext.Request.Cookies["cartId"];
             Guid cartId;
             if (string.IsNullOrEmpty(sessionCartId))
             {
                 cartId = Guid.NewGuid();
-                HttpContext.Session.SetString("cartId", cartId.ToString());
+                HttpContext.Response.Cookies.Append("cartId", cartId.ToString());
             }
             else
             {
@@ -39,14 +39,44 @@ namespace StudyWeb.Controllers
             }
             return View(ShoppingCartVM);
         }
+        public IActionResult Summary()
+        {
+            var sessionCartId = HttpContext.Request.Cookies["cartId"];
+            Guid cartId;
+            if (string.IsNullOrEmpty(sessionCartId))
+            {
+                cartId = Guid.NewGuid();
+                HttpContext.Response.Cookies.Append("cartId", cartId.ToString());
+            }
+            else
+            {
+                cartId = Guid.Parse(sessionCartId);
+            }
+            ShoppingCartVM = new ShoppingCartVM()
+            {
+                ListCart = _unitOfWork.ShoppingCarts.GetAll(u => u.SessionGuid == cartId, includeProperties: "Product"),
+                OrderHeader = new()
+            };
+            foreach (var cart in ShoppingCartVM.ListCart)
+            {
+                ShoppingCartVM.OrderHeader.OrderTotal += (cart.Price * cart.Count);
+            }
+            return View(ShoppingCartVM);
+        }
+        //[HttpPost]
+        //public IActionResult SummaryPOST()
+        //{
+        //    return View();
+        //}
+
         public IActionResult Plus(int cartId)
         {
-            var sessionCartId = HttpContext.Session.GetString("cartId");
+            var sessionCartId = HttpContext.Request.Cookies["cartId"];
             Guid cartGuidId;
             if (string.IsNullOrEmpty(sessionCartId))
             {
                 cartGuidId = Guid.NewGuid();
-                HttpContext.Session.SetString("cartId", cartGuidId.ToString());
+                HttpContext.Response.Cookies.Append("cartId", cartGuidId.ToString());
             }
             else
             {
@@ -59,12 +89,12 @@ namespace StudyWeb.Controllers
         }
         public IActionResult Minus(int cartId)
         {
-            var sessionCartId = HttpContext.Session.GetString("cartId");
+            var sessionCartId = HttpContext.Request.Cookies["cartId"];
             Guid cartGuidId;
             if (string.IsNullOrEmpty(sessionCartId))
             {
                 cartGuidId = Guid.NewGuid();
-                HttpContext.Session.SetString("cartId", cartGuidId.ToString());
+                HttpContext.Response.Cookies.Append("cartId", cartGuidId.ToString());
             }
             else
             {
@@ -87,12 +117,12 @@ namespace StudyWeb.Controllers
         }
         public IActionResult Remove(int cartId)
         {
-            var sessionCartId = HttpContext.Session.GetString("cartId");
+            var sessionCartId = HttpContext.Request.Cookies["cartId"];
             Guid cartGuidId;
             if (string.IsNullOrEmpty(sessionCartId))
             {
                 cartGuidId = Guid.NewGuid();
-                HttpContext.Session.SetString("cartId", cartGuidId.ToString());
+                HttpContext.Response.Cookies.Append("cartId", cartGuidId.ToString());
             }
             else
             {

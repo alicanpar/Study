@@ -1,7 +1,9 @@
 using Microsoft.EntityFrameworkCore;
+using Stripe;
 using Study.DataAccess;
 using Study.DataAccess.Repository;
 using Study.DataAccess.Repository.IRepository;
+using Study.Utility;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
    builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.Configure<StripeSettings>(builder.Configuration.GetSection("Stripe"));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddSession();
 var app = builder.Build();
@@ -25,6 +28,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
 
 app.UseAuthorization();
 

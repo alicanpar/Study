@@ -14,12 +14,12 @@ namespace StudyWeb.ViewComponents
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var sessionCartId = HttpContext.Session.GetString("cartId");
+            var sessionCartId = HttpContext.Request.Cookies["cartId"];
             Guid cartId;
             if (string.IsNullOrEmpty(sessionCartId))
             {
                 cartId = Guid.NewGuid();
-                HttpContext.Session.SetString("cartId", cartId.ToString());
+                HttpContext.Response.Cookies.Append("cartId", cartId.ToString());
             }
             else
             {
