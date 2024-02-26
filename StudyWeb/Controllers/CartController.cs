@@ -17,7 +17,12 @@ namespace StudyWeb.Controllers
         {
             _unitOfWork = unitOfWork;
         }
-        public IActionResult Index()
+        /// <summary>
+        /// fasdfasfas id null sadece şu durumdaolur
+        /// </summary>
+        /// <params>id</params>
+        /// <returns>view</returns>
+        public IActionResult Index(int? id)
         {
             var sessionCartId = HttpContext.Request.Cookies["cartId"];
             Guid cartId;
@@ -158,6 +163,7 @@ namespace StudyWeb.Controllers
                     _unitOfWork.Save();
                 }
             }
+            ViewBag.OrderTotal = orderHeader.OrderTotal;
             List<ShoppingCart> shoppingCarts = _unitOfWork.ShoppingCarts.GetAll(u => u.Id == id).ToList();
             HttpContext.Session.Clear();
             HttpContext.Response.Cookies.Delete("cartId");

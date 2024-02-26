@@ -36,7 +36,7 @@ namespace StudyWeb.Controllers
                 _unitOfWork.ProductCategory.Add(obj);
                 _unitOfWork.Save();
                 TempData["success"] = "Ürün kategorisi oluşturuldu";
-                return RedirectToAction("Index");
+                return RedirectToAction("ProductCategoryList");
             }
             return View(obj);
         }
@@ -57,7 +57,7 @@ namespace StudyWeb.Controllers
             _unitOfWork.ProductCategory.Remove(obj);
             _unitOfWork.Save();
             TempData["success"] = "Ürün Kategorisi Başarıyla Silindi";
-            return RedirectToAction("Index");
+            return RedirectToAction("ProductCategoryDelete");
         }
 
         //Get
@@ -88,7 +88,7 @@ namespace StudyWeb.Controllers
                 _unitOfWork.ProductCategory.Update(obj);
                 _unitOfWork.Save();
                 TempData["success"] = "Ürün Kategorisi Düzenleme Başarılı";
-                return RedirectToAction("Index");
+                return RedirectToAction("ProductCategoryList");
             }
             return View(obj);
         }

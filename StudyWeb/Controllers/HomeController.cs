@@ -2,7 +2,6 @@
 using Study.DataAccess.Repository.IRepository;
 using System.Diagnostics;
 using Study.Models;
-using System.Security.Claims;
 using Study.Utility;
 
 namespace StudyWeb.Controllers
@@ -24,6 +23,10 @@ namespace StudyWeb.Controllers
             return View(productList);
         }
         public IActionResult Aboutus()
+        {
+            return View();
+        }
+        public IActionResult NotFound()
         {
             return View();
         }
@@ -80,53 +83,43 @@ namespace StudyWeb.Controllers
         }
         public IActionResult ProductFiltre(string id)
         {
-            if (id == "telefon")
-            {//telefon
-                IEnumerable<Product> productList = _unitOfWork.Products.GetAll().Where(u => u.ProductCategoryId == 11);
-                return View(productList);
-            }
-            else if (id == "tablet")
-            {//tablet
-                IEnumerable<Product> productList = _unitOfWork.Products.GetAll().Where(u => u.ProductCategoryId == 13);
-                return View(productList);
-            }
-            else if (id == "laptop")
-            {//laptop
-                IEnumerable<Product> productList = _unitOfWork.Products.GetAll().Where(u => u.ProductCategoryId == 14);
-                return View(productList);
-            }
-            else if (id == "laptop")
-            {//laptop
-                IEnumerable<Product> productList = _unitOfWork.Products.GetAll().Where(u => u.ProductCategoryId == 15);
-                return View(productList);
-            }
-            else if (id == "telefon_samsung")
-            {//telefon ve samsung
-                IEnumerable<Product> productList = _unitOfWork.Products.GetAll().Where(u => u.Mark == "Samsung" && u.ProductCategoryId == 11);
-                return View(productList);
-            }
-            else if (id == "telefon_apple")
-            {//telefon ve apple
-                IEnumerable<Product> productList = _unitOfWork.Products.GetAll().Where(u => u.Mark == "Apple" && u.ProductCategoryId == 11);
-                return View(productList);
-            }
-            else if (id == "tablet_samsung")
-            {//tablet ve samsung
-                IEnumerable<Product> productList = _unitOfWork.Products.GetAll().Where(u => u.Mark == "Samsung" && u.ProductCategoryId == 13);
-                return View(productList);
-            }
-            else if (id == "tablet_apple")
-            {//tablet ve apple
-                IEnumerable<Product> productList = _unitOfWork.Products.GetAll().Where(u => u.Mark == "Apple" && u.ProductCategoryId == 13);
-                return View(productList);
-            }
-            else if (id == "tablet_asus")
-            {//laptop ve asus
-                IEnumerable<Product> productList = _unitOfWork.Products.GetAll().Where(u => u.Mark == "Asus" && u.ProductCategoryId == 14);
-                return View(productList);
-            }
+            var filterCase = _unitOfWork.Products.GetAll().AsQueryable();
+            IEnumerable<Product> productList;
+            switch (id)
+            {
+                case "telefon":
+                    productList = filterCase.Where(w => w.ProductCategoryId == 11);
+                    break;
 
-            return NotFound();
+                case "tablet":
+                    productList = filterCase.Where(w => w.ProductCategoryId == 13);
+                    break;
+
+                case "laptop":
+                    productList = filterCase.Where(w => w.ProductCategoryId == 14);
+                    break;
+                case "telefon_samsung":
+                    productList = filterCase.Where(w => w.Mark == "Samswng" && w.ProductCategoryId == 11);
+                    break;
+                case "telefon_apple":
+                    productList = filterCase.Where(w => w.Mark == "Apple" && w.ProductCategoryId == 11);
+                    break;
+                case "tablet_samsung":
+                    productList = filterCase.Where(w => w.Mark == "Samsung" && w.ProductCategoryId == 13);
+                    break;
+                case "tablet_apple":
+                    productList = filterCase.Where(w => w.Mark == "Apple" && w.ProductCategoryId == 13);
+                    break;
+                case "tablet_asus":
+                    productList = filterCase.Where(w => w.Mark == "Asus" && w.ProductCategoryId == 14);
+                    break;
+
+                default:
+                    productList = filterCase.Where(w => w.Id < 0);
+                    break;
+            }
+            return View(productList);
+            //return NotFound();
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
